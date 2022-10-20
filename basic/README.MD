@@ -53,6 +53,7 @@ Así debería estar quedando conformado nuestro proyecto previo al último paso
 Archivos de configuración
 
 Finalmente, instalemos TypeScript 😊. Desde la terminal y dentro de la ruta del proyecto, ejecuta:
+
     * npm install typescript --save-dev
 
 ## Para verificar la versión instalada:
@@ -108,8 +109,6 @@ El tipado en TypeScript hace referencia a cómo declaramos una variable, necesit
 ## La flexibilidad de JavaScript
 Nosotros podemos declarar una variable de un tipo de valor y a lo largo del código ir cambiándolo si lo deseamos. Por lo que en un momento puede ser de tipo string y después de tipo boolean:
 
-
-
 ## Tipado en JavaScript
 
 Para proyectos de sofware que tienen una gran escalabilidad, esto podría ser fuente de fallas en el programa.
@@ -123,3 +122,106 @@ const productPrice = 12;
 En TypeScript, para el caso anterior, es similar solo que añadimos : y el tipo de dato de la variable, la cual sería number. A esto último se le llama type annotation o anotación de tipo:
 
 const productPrice: number = 12;
+
+## Tipos inferidos
+TypeScript puede inferir el tipo de dato de una variable a pesar de no haberlo declarado explícitamente.
+
+Inferencia de tipos
+A partir de la inicialización de la variable TypeScript infiere el tipo que será a lo largo del código y este no puede variar. Por ejemplo:
+
+- let myName = "Victoria";
+
+Si bien no indicamos el tipo de dato como se haría de esta manera:
+
+- let myName: string = "Victoria";
+
+TypeScript infiere que la variable myName será del tipo string y en adelante no podrá tomar un valor que no sea de este tipo de dato.
+
+- myName = 30; 
+
+//Nos señalará como error pues se le quiere asignar un número a una variable de tipo string.
+En Visual Studio Code puedes obtener autocompletado teniendo sugerencias según el tipo de dato que sea la variable:
+Autocompletado en Visual Studio Code
+
+- Nombres de variables iguales
+
+TypeScript te indicará como error aquellas variables con el mismo nombre a pesar de estar en archivos distintos. Esto no sucederá en entornos preconfigurados como por ejemplo Angular o React, ya que estos trabajan de forma modular o tienen un alcance (scope) para cada variable.
+
+Si deseas trabajar con los mismos nombres de variables en diferentes archivos, puedes crear una función anónima autoejecutada:
+
+    * ( () => {
+        let myName = "Victoria";
+        })();
+Lo mismo por cada variable que desees tener el mismo nombre (myName para este ejemplo) deberás crear este tipo de función para evitar que te den estas advertencias.
+
+## Operaciones
+En JavaScript, una variable de tipo number puede fácilmente ser concatenado con otra de tipo string:
+
+    * //JavaScript
+    let myNumber = 30;
+    myNumber = myNumber + "5"; //El resultado sería '305'
+   
+Sin embargo, esto podría llevar confusiones y errores durante la ejecución del programa, además de estar cambiando el 
+tipo de dato de la variable. Por ello, en TypeScript solo se pueden hacer operaciones numéricas entre números valga 
+la redundancia:
+
+    * //TypeScript
+    let myNumber: number = 30;
+
+    myNumber = myNumber + 10; //CORRECTO
+    myNumber = myNumber + "10"; //INCORRECTO
+
+## Uso de variables sin inicializar
+
+Serán señalados como errores aquellas variables que queramos usar sin haberles dado un valor inicial:
+
+    *//TypeScript
+    let productInStock: number;
+    console.log("Product in stock: " + productInStock);
+
+Señalar que si no se va a inicializar aún la variable, definir explícitamente el tipo de dato, pues TypeScript no puede inferirlo si no tiene un valor inicial.
+
+## Conversión de números de tipo string a tipo number
+
+Para esto usaremos el método parseInt:
+
+    * let discount: number = parseInt("123");
+
+    let numeroString: string = "100";
+    let nuevoNumero: number;
+    nuevoNumero = parseInt(numeroString);
+
+Esto funciona si el string tiene solo y exclusivamente números que no empiecen con 0. De lo contrario, el resultado será 
+de tipo NaN (Not a Number):
+
+
+    * //TypeScript
+    let numeroPrueba: number = parseInt("palabra");
+    console.log(numeroPrueba); //NaN
+
+## Binarios y Hexadecimales
+TypeScript nos puede indicar error si intentamos definir números binarios que tengan números que no sean 0 o 1 y si 
+declaramos hexadecimales usando valores fuera del rango:
+
+    * //**********TypeScript**********
+    //Binarios: se definen colocando "0b" al inicio del valor
+    let primerBinario = 0b1010; //CORRECTO
+    let segundobinario = 0b1210; //INCORRECTO. El 2 es inválido
+
+    //Hexadecimales: se definen colocando "0x" al inicio del valor
+    let primerHexa = 0xfff; //CORRECTO
+    let segundoHexa = 0xffz; //INCORRECTO. El "z" es inválido
+
+En consola, si están correctamente asignados, se hará una conversión a decimal de dichos números:
+
+    * let primerHexa = 0xfff;
+    console.log(primerHexa); // 4095
+
+    let primerBinario = 0b1010;
+    console.log(primerBinario); // 10
+
+## Consejo
+Cuando definas una variable de tipo de dato number, es preferible que el nombre de tipo sea en minúscula. Esto como buena práctica, pues se hará referencia al tipo de dato number y no al objeto Number propio del lenguaje:
+
+    * let myNumber: number = 20; // Buena practica.
+      let otherNumber: Number = 20; // Mala practica.
