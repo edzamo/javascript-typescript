@@ -1,15 +1,21 @@
+# Typescript Basic+
+
+
+## Instalación de Typescript
 
 No vamos a instalar TypeScript de manera global, sino solo para el proyecto, ya que normalmente así se hace en mundo real. Se trabaja por proyecto.
 
-Realicemos los siguientes pasos:
+## Realicemos los siguientes pasos:
 
 Creamos una carpeta para nuestro proyecto (el nombre que desees) e ingresamos a la misma. Mediante la terminal sería lo siguiente:
-    * cmkdir ts-project
-    * cd tsc --version
+
+- cmkdir ts-project
+- cd tsc --version
+
 Abrimos nuestro editor de código desde la ubicación de la carpeta del proyecto. Si usas Visual Studio Code, usando la terminal es así:
 code .
 
-Crearemos los siguientes archivos:
+## Crearemos los siguientes archivos:
 
 Un archivo .gitignore en el editor o desde la terminal. Para su contenido, podemos utilizar la página gitignore.io. En nuestro programa necesitaremos las siguientes especificaciones:
 
@@ -34,8 +40,9 @@ quote_type = single
 max_line_length = off
 trim_trailing_whitespace = false
 
-Para que funcione esta configuración debes tener instalado la siguiente extensión en tu Visual Studio Code:
-Extensión EditorConfig
+## Para que funcione esta configuración 
+
+debes tener instalado la siguiente extensión en tu Visual Studio Code: Extensión EditorConfig
 
 Necistaremos también tener creado una carpeta de nombre src dentro de nuestro proyecto
 Ahora crearemos nuestro archivo package.json de manera simple desde la terminal y dentro de la ruta del proyecto:
@@ -48,39 +55,42 @@ Archivos de configuración
 Finalmente, instalemos TypeScript 😊. Desde la terminal y dentro de la ruta del proyecto, ejecuta:
     * npm install typescript --save-dev
 
-Para verificar la versión instalada:
+## Para verificar la versión instalada:
 
-npx tsc --version
+- npx tsc --version
 
 
 Nos ayuda a ahorrar mucho trabajo manual como transpilar archivo por archivo, indicar el target, etc.
 
-Creando un archivo TSConfig.json
+## Creando un archivo TSConfig.json
 En la terminal, ubicándonos dentro del directorio en el que queremos que se cree el archivo, ejecutemos:
 
-npx tsc --init
+- npx tsc --init
 
 Nos creará automáticamente el archivo con propiedades básicas activadas:
 Resultado al correr el comando: npx tsc --init
 
 Dentro del archivo TSConfig.json podemos ver que tiene muchas propiedades comentadas (desactivadas) y de las cuales solo algunas están activadas.
 
-Compilación en TypeScript
+## Compilación en TypeScript
 Nuestro código TypeScript se transpilará según las propiedades indicadas en nuestro archivo `TSConfig.json``:
+33
+- npx tsc
 
-npx tsc
-Compilación en tiempo real
+## Compilación en tiempo real
+
 Nos puede resultar tedioso estar ejecutando el comando anterior siempre después de escribir nuestro código. Para evitar esto, podemos hacer que el compilador esté detectando cada cambio que realicemos en nuestros archivos TypeScript y haga la transpilación de inmediato:
 
-npx tsc --watch
+- npx tsc --watch
 
-Proyecto
+## Proyecto
+
 Creemos el archivo TSConfig.json en nuestro proyecto
 Activamos las siguientes propiedades dentro de dicho archivo:
 outDir: indicando la carpeta dist como el directorio destino de los archivos transpilados
-Ejemplo de outDir
+- Ejemplo de outDir
 
-rootDir: indicamos que nuestros archivos TypeScript, los cuales serán “compilados” luego, estarán en la carpeta src
+- rootDir: indicamos que nuestros archivos TypeScript, los cuales serán “compilados” luego, estarán en la carpeta src
 Ejemplo de rootDir
 
 Creamos el archivo 02-demo2.ts dentro de la carpeta src con el siguiente código:
@@ -89,5 +99,27 @@ const numbers = [1,3,4];
 Probemos la compilación de nuestros archivos:
 npx tsc
 
-Estructura de archivos del proyecto de TypeScript
+## Estructura de archivos del proyecto de TypeScript
 Observaremos que los archivos transpilados se encuentran en nuestra carpeta dist.
+
+## Qué es el tipado en TypeScript
+El tipado en TypeScript hace referencia a cómo declaramos una variable, necesitamos asignar el tipo de dato, conocido como type annotation, con esto evitamos mezclar distintos tipos de datos.
+
+## La flexibilidad de JavaScript
+Nosotros podemos declarar una variable de un tipo de valor y a lo largo del código ir cambiándolo si lo deseamos. Por lo que en un momento puede ser de tipo string y después de tipo boolean:
+
+
+
+## Tipado en JavaScript
+
+Para proyectos de sofware que tienen una gran escalabilidad, esto podría ser fuente de fallas en el programa.
+
+Controlando la flexibilidad
+Gracias a TypeScript podemos manejar el tipado de las variables para evitar anomalías en el código.
+
+En JavaScript, para declarar una variable constante lo realizamos así:
+
+const productPrice = 12;
+En TypeScript, para el caso anterior, es similar solo que añadimos : y el tipo de dato de la variable, la cual sería number. A esto último se le llama type annotation o anotación de tipo:
+
+const productPrice: number = 12;
