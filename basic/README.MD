@@ -45,3 +45,39 @@ npm install typescript --save-dev
 Para verificar la versión instalada:
 
 npx tsc --version
+
+
+Nos ayuda a ahorrar mucho trabajo manual como transpilar archivo por archivo, indicar el target, etc.
+
+Creando un archivo TSConfig.json
+En la terminal, ubicándonos dentro del directorio en el que queremos que se cree el archivo, ejecutemos:
+
+npx tsc --init
+Nos creará automáticamente el archivo con propiedades básicas activadas:
+Resultado al correr el comando: npx tsc --init
+
+Dentro del archivo TSConfig.json podemos ver que tiene muchas propiedades comentadas (desactivadas) y de las cuales solo algunas están activadas.
+
+Compilación en TypeScript
+Nuestro código TypeScript se transpilará según las propiedades indicadas en nuestro archivo `TSConfig.json``:
+
+npx tsc
+Compilación en tiempo real
+Nos puede resultar tedioso estar ejecutando el comando anterior siempre después de escribir nuestro código. Para evitar esto, podemos hacer que el compilador esté detectando cada cambio que realicemos en nuestros archivos TypeScript y haga la transpilación de inmediato:
+
+npx tsc --watch
+Proyecto
+Creemos el archivo TSConfig.json en nuestro proyecto
+Activamos las siguientes propiedades dentro de dicho archivo:
+outDir: indicando la carpeta dist como el directorio destino de los archivos transpilados
+Ejemplo de outDir
+
+rootDir: indicamos que nuestros archivos TypeScript, los cuales serán “compilados” luego, estarán en la carpeta src
+Ejemplo de rootDir
+
+Creamos el archivo 02-demo2.ts dentro de la carpeta src con el siguiente código:
+const numbers = [1,3,4];
+Probemos la compilación de nuestros archivos:
+npx tsc
+Estructura de archivos del proyecto de TypeScript
+Observaremos que los archivos transpilados se encuentran en nuestra carpeta dist.
