@@ -1,6 +1,5 @@
 # Typescript Basic+
 
-
 ## Instalación de Typescript
 
 No vamos a instalar TypeScript de manera global, sino solo para el proyecto, ya que normalmente así se hace en mundo real. Se trabaja por proyecto.
@@ -23,7 +22,9 @@ Página de gitignore
 Luego copiamos lo que nos genera la web y lo pegamos en nuestro gitignore desde nuestro editor de código.
 
 Un archivo .editorconfig (opcional), si estás usando Visual Studio Code, con el fin de dar una configuración simple y sencilla a la hora de ejecutar código. Aquí copia y pega lo siguiente:
+
 # Editor configuration, see https://editorconfig.org
+
 root = true
 
 [*]
@@ -40,7 +41,7 @@ quote_type = single
 max_line_length = off
 trim_trailing_whitespace = false
 
-## Para que funcione esta configuración 
+## Para que funcione esta configuración
 
 debes tener instalado la siguiente extensión en tu Visual Studio Code: Extensión EditorConfig
 
@@ -60,10 +61,10 @@ Finalmente, instalemos TypeScript 😊. Desde la terminal y dentro de la ruta de
 
 - npx tsc --version
 
-
 Nos ayuda a ahorrar mucho trabajo manual como transpilar archivo por archivo, indicar el target, etc.
 
 ## Creando un archivo TSConfig.json
+
 En la terminal, ubicándonos dentro del directorio en el que queremos que se cree el archivo, ejecutemos:
 
 - npx tsc --init
@@ -74,8 +75,10 @@ Resultado al correr el comando: npx tsc --init
 Dentro del archivo TSConfig.json podemos ver que tiene muchas propiedades comentadas (desactivadas) y de las cuales solo algunas están activadas.
 
 ## Compilación en TypeScript
+
 Nuestro código TypeScript se transpilará según las propiedades indicadas en nuestro archivo `TSConfig.json``:
 33
+
 - npx tsc
 
 ## Compilación en tiempo real
@@ -89,10 +92,10 @@ Nos puede resultar tedioso estar ejecutando el comando anterior siempre después
 Creemos el archivo TSConfig.json en nuestro proyecto
 Activamos las siguientes propiedades dentro de dicho archivo:
 outDir: indicando la carpeta dist como el directorio destino de los archivos transpilados
-- Ejemplo de outDir
 
+- Ejemplo de outDir
 - rootDir: indicamos que nuestros archivos TypeScript, los cuales serán “compilados” luego, estarán en la carpeta src
-Ejemplo de rootDir
+  Ejemplo de rootDir
 
 Creamos el archivo 02-demo2.ts dentro de la carpeta src con el siguiente código:
 const numbers = [1,3,4];
@@ -101,12 +104,15 @@ Probemos la compilación de nuestros archivos:
 npx tsc
 
 ## Estructura de archivos del proyecto de TypeScript
+
 Observaremos que los archivos transpilados se encuentran en nuestra carpeta dist.
 
 ## Qué es el tipado en TypeScript
+
 El tipado en TypeScript hace referencia a cómo declaramos una variable, necesitamos asignar el tipo de dato, conocido como type annotation, con esto evitamos mezclar distintos tipos de datos.
 
 ## La flexibilidad de JavaScript
+
 Nosotros podemos declarar una variable de un tipo de valor y a lo largo del código ir cambiándolo si lo deseamos. Por lo que en un momento puede ser de tipo string y después de tipo boolean:
 
 ## Tipado en JavaScript
@@ -124,6 +130,7 @@ En TypeScript, para el caso anterior, es similar solo que añadimos : y el tipo 
 const productPrice: number = 12;
 
 ## Tipos inferidos
+
 TypeScript puede inferir el tipo de dato de una variable a pesar de no haberlo declarado explícitamente.
 
 Inferencia de tipos
@@ -137,7 +144,7 @@ Si bien no indicamos el tipo de dato como se haría de esta manera:
 
 TypeScript infiere que la variable myName será del tipo string y en adelante no podrá tomar un valor que no sea de este tipo de dato.
 
-- myName = 30; 
+- myName = 30;
 
 //Nos señalará como error pues se le quiere asignar un número a una variable de tipo string.
 En Visual Studio Code puedes obtener autocompletado teniendo sugerencias según el tipo de dato que sea la variable:
@@ -155,14 +162,15 @@ Si deseas trabajar con los mismos nombres de variables en diferentes archivos, p
 Lo mismo por cada variable que desees tener el mismo nombre (myName para este ejemplo) deberás crear este tipo de función para evitar que te den estas advertencias.
 
 ## Operaciones
+
 En JavaScript, una variable de tipo number puede fácilmente ser concatenado con otra de tipo string:
 
     * //JavaScript
     let myNumber = 30;
     myNumber = myNumber + "5"; //El resultado sería '305'
-   
-Sin embargo, esto podría llevar confusiones y errores durante la ejecución del programa, además de estar cambiando el 
-tipo de dato de la variable. Por ello, en TypeScript solo se pueden hacer operaciones numéricas entre números valga 
+
+Sin embargo, esto podría llevar confusiones y errores durante la ejecución del programa, además de estar cambiando el
+tipo de dato de la variable. Por ello, en TypeScript solo se pueden hacer operaciones numéricas entre números valga
 la redundancia:
 
     * //TypeScript
@@ -191,16 +199,16 @@ Para esto usaremos el método parseInt:
     let nuevoNumero: number;
     nuevoNumero = parseInt(numeroString);
 
-Esto funciona si el string tiene solo y exclusivamente números que no empiecen con 0. De lo contrario, el resultado será 
+Esto funciona si el string tiene solo y exclusivamente números que no empiecen con 0. De lo contrario, el resultado será
 de tipo NaN (Not a Number):
-
 
     * //TypeScript
     let numeroPrueba: number = parseInt("palabra");
     console.log(numeroPrueba); //NaN
 
 ## Binarios y Hexadecimales
-TypeScript nos puede indicar error si intentamos definir números binarios que tengan números que no sean 0 o 1 y si 
+
+TypeScript nos puede indicar error si intentamos definir números binarios que tengan números que no sean 0 o 1 y si
 declaramos hexadecimales usando valores fuera del rango:
 
     * //**********TypeScript**********
@@ -221,9 +229,10 @@ En consola, si están correctamente asignados, se hará una conversión a decima
     console.log(primerBinario); // 10
 
 ## Consejo
+
 Cuando definas una variable de tipo de dato number, es preferible que el nombre de tipo sea en minúscula. Esto como buena práctica, pues se hará referencia al tipo de dato number y no al objeto Number propio del lenguaje:
 
-      let myNumber: number = 20; // Buena practica.
+    let myNumber: number = 20; // Buena practica.
       let otherNumber: Number = 20; // Mala practica.
 
 ## Boolens
@@ -240,39 +249,35 @@ Este tipo de dato nos permite almacenar una cadena de caracteres.
 Podemos definir un string con:
 
 - Comillas simples:
-    let myProduct = 'Soda'; //CORRECTO
-    let comillasDobles = 'Puedo "usar" comillas dobles tambien'; //CORRECTO
-    let comillaInvalida = 'No puedo 'usar' otra vez una comilla simple'; //INCORRECTO
+  let myProduct = 'Soda'; //CORRECTO
+  let comillasDobles = 'Puedo "usar" comillas dobles tambien'; //CORRECTO
+  let comillaInvalida = 'No puedo 'usar' otra vez una comilla simple'; //INCORRECTO
 
 Se pueden usar comillas dobles dentro, más no otra vez comillas simples.
 
 - Comillas dobles:
-    let myProduct = "Soda"; //CORRECTO
-    let comillaSimple = "Puedo 'usar' comilla simple tambien"; //CORRECTO
-    let comillaInvalida = "No puedo "usar" otra vez las comillas dobles"; //INCORRECTO
+  let myProduct = "Soda"; //CORRECTO
+  let comillaSimple = "Puedo 'usar' comilla simple tambien"; //CORRECTO
+  let comillaInvalida = "No puedo "usar" otra vez las comillas dobles"; //INCORRECTO
 
 Se puede usar comillas simples dentro, más no otra vez comillas dobles.
 
 - Usando backticks:
-    let myName = `Frank`;
+  let myName = `Frank`;
 
 Esta forma de asignar string trae algunas ventajas:
 
 - Declarar valores de múltiples líneas:
-    let texto = `
-        Nunca
-        pares
-        de aprender :)
-    `;
+  let texto = `Nunca pares de aprender :)`;
 - Concatenar dentro del mismo string. Para esto es necesario usar este símbolo del dólar seguido de llaves ${} y escribir lo que queremos concatenar dentro de esas llaves:
-    let variableTitulo = "TypeScript";
-    let summary = `
-        title: ${variableTitulo}
-    `;
+  let variableTitulo = "TypeScript";
+  let summary = `title: ${variableTitulo}`;
 - También respeta la indentación:
-    let html= `
-    <!DOCTYPE html>
-    <html lang="en">
+  let html= `
+
+  <!DOCTYPE html>
+
+  <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -289,7 +294,6 @@ Esta forma de asignar string trae algunas ventajas:
 Es una colección de datos ordenada. Los definimos de la siguiente manera:
 
     let prices = [1,2,3,4,5];
-
 
     /* Método Push para agregar un elemento al final del array */
     prices.push(6);
@@ -312,8 +316,8 @@ Lo puedes definir así:
 
 - Indicar explícitamente los tipos de datos que almacenará el array:
 
-      let prices: (number | string)[] = ["hola",2,4,6,"mundo"];
-      let otherPrices: (boolean | number)[];
+  let prices: (number | string)[] = ["hola",2,4,6,"mundo"];
+  let otherPrices: (boolean | number)[];
 
 Para este caso, a menos que la variable sea una constante, no es necesario que inicialices la variable, pues ya le indicaste el tipo de dato.
 
@@ -323,3 +327,221 @@ En la inicialización de la variable, colocar datos con el tipo de dato que quie
     let prices = ["hola",2,4,6,"mundo"];
     // "hola", "mundo" => string
     // 2,4,6 => number
+
+# Manipulación de Arrays en JavaScript.
+
+Requisitos iniciales
+Como requisito inicial, deberás tener dos carpetas: client y server que servirán para ejercicios en el navegador y en el servidor, respectivamente.
+También necesitarás instalar una dependencia llamada http-server. Asimismo puedes clonar el [repositorio Git](https://github.com/platzi/curso-manipulacion-de-arrays/tree/main)  de GitHub del curso.
+
+Estructura inicial del proyecto del curso
+Si no conoces cómo iniciar un proyector para instalar dependencias, te recomiendo que realices el curso de [Gestión de Dependencias y Paquetes con NPM](https://platzi.com/cursos/npm/).
+
+Te recomiendo usar Codi.link, es un editor de código para escribir HTML, CSS y JavaScript y visualizar el resultado a tiempo real. Daña el código, resuelve los problemas de cada clase o genera nuevos ejemplos que te ayuden a reforzar los temas aprendidos.
+
+## For Each
+
+El método forEach de los arrays consiste en ejecutar una función (callback) para cada uno de los elementos iterados. Iterar significa repetir una acción 
+varias veces.
+
+Este método recibe dos argumentos:
+
+- La función que itera cada elemento del array (obligatorio).
+- Un objeto al que puede hacer referencia el contexto this en la función. Si se lo omite, será undefined. Recuerde que this en arrow functions es el objeto global.
+
+        array.forEach(function(), thisArg)
+
+La función, que recibe como argumento el método forEach, utiliza tres parámetros opcionales:
+
+- El valor actual del elemento iterado. Es decir, si es la primera iteración, será el primer elemento, y así sucesivamente.
+- El índice del elemento iterado. Es decir, si es la primera iteración, será el índice 0, y así sucesivamente.
+- El array que está iterando.
+        array.forEach(function(element, index, array))
+
+## Diferencia entre la estructura for y el método forEach
+Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
+
+        const letters=['a','b','c']
+
+        // Utilizando la estructura repetitiva for
+        for(let index=0; index<letters.length; index++){
+            const element=letters[index]
+            console.log('for',element)
+        }
+
+    // Utilizando el método forEach
+    letters.forEach(item => console.log('forEach',item))
+## Mostrar elementos de un array al usuario
+Ahora que ya conoces cómo funciona el método forEach, utilízalo para agregar elementos al HTML y así que el usuario lo mire.
+
+Por ejemplo, en un archivo HTML agrega una etiqueta div con un id app, que nos servirá para agregar nuestros elementos.
+
+        <div id="app"></div>
+Después crea la lógica en un archivo de JavaScript.
+
+        const products = [
+        { title: 'Burger', price: 121 },
+        { title: 'Pizza', price: 20 },
+        { title: 'Soda', price: 5 },
+        ]
+
+        const app = document.getElementById('app')
+
+        products.forEach(product => {
+        app.innerHTML += `<li>${product.title} -$ ${product.price}</li>`
+        })
+Y listo, en pantalla aparecerán los elementos del array products con su título y precio. Revisa el resultado en este codi.link.
+
+## Ejercicio utilizando la función forEach
+Crea una lista de tareas, a partir de un array que contenga el título y el estado (completado o no) y muéstralos en un archivo HTML. 
+Puedes utilizar un input de tipo checkbox para indicar el estado de la tarea. ¡Comparte tu trabajo en la sección de aportes!
+
+## Mutable o Inmutable
+
+Los conceptos de mutabilidad e inmutabilidad son muy importantes para los siguientes métodos de arrays. Existen métodos mutables que cambian el array original; e inmutables que devuelven un 
+array diferente al original.
+
+## Referencias en memoria
+En JavaScript, cada estructura está guardada en una referencia en memoria, por lo que si cambiamos un elemento en el array, también lo haremos en esa referencia. Al clonar arrays, se crea un nuevo array que tiene las mismas referencias en memoria que el original, por lo que si se realiza un cambio en el original, también cambiará en la copia.
+
+        const original = [1,2,3]
+        const copia = original
+        copia[0] = "Hola"
+
+        console.log(original) // [ 'Hola', 2, 3 ]
+## Diferencia entre mutabilidad e inmutabilidad
+Con lo mencionado anteriormente, mutable es aquella acción que cambia el valor en la referencia en memoria del elemento del array original, 
+provocando que cambien el original y la copia. Inmutable es la acción en la que se cambia el valor, pero en una referencia diferente del original, 
+provocando que el original siga igual.
+
+La mutabilidad es más flexible y una buena opción si se requiere cambiar, actualizar o eliminar datos; pero esto puede ocasionar fallos o resultados 
+erróneos en nuestra aplicación. La inmutabilidad es más exigente, te permite generar nuevas estructuras para manejarlas sin cambiar la original; pero 
+esto puede provocar que la memoria colapse.
+
+Por lo que, ¿cuál es mejor? La respuesta es ninguna, cada uno te permite manejar estructuras de datos, por ende es necesario identificar cuál forma 
+es la adecuada a aplicar en un algoritmo.
+
+## Qué es el método map
+
+El método map consiste en crear un nuevo array a partir de los elementos originales transformados mediante una función (callback) y es inmutable.
+
+La transformación implica cambiar cualquier elemento en otro, ya sea un número, un objeto, otro array. Las posibilidades son infinitas.
+
+Este método recibe dos argumentos:
+
+- La función que itera y transforma cada elemento del array (obligatorio).
+- Un objeto al que puede hacer referencia el contexto this en la función. Si se lo omite, será undefined. Recuerde que this en arrow functions es el objeto global.
+
+        let otherArray = array.map(function(), thisArg)
+
+La función, que recibe como argumento el método map, utiliza tres parámetros:
+
+- El valor actual del elemento iterado. Es decir, si es la primera iteración, será el primer elemento, y así sucesivamente.
+- El índice del elemento iterado. Es decir, si es la primera iteración, será el índice 0, y así sucesivamente.
+- El array que está iterando.
+
+        const other = array.map(function(element, index, array))
+
+Diferencia entre la estructura for y el método map
+Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
+
+Por ejemplo, hagamos un algoritmo que transforme cada elemento de un array en el doble de sí mismo.
+
+Si utilizamos la estructura For, necesitaremos un array adicional vacío y utilizarlo con el método push para agregar los elementos transformados. El método push es mutable.
+
+        const numbers = [1,2,3,4,5]
+        const newNumbers = []
+
+        for(let i=0; i< numbers.length; i++){
+            const number = numbers[i]
+            newNumbers.push(number*2)
+        }
+
+        console.log(newNumbers) // [ 2, 4, 6, 8, 10 ]
+
+Con el método map, solo debemos establecer la función que indique la transformación para cada elemento.
+
+        const numbers = [1,2,3,4,5]
+        const newNumbers = numbers.map( function(number){
+            return number * 2
+        })
+        // o 
+        const newNumbers = numbers.map(number => number * 2)
+
+        console.log(newNumbers) // [ 2, 4, 6, 8, 10 ]
+
+Recuerda siempre retornar un valor en la función callback del método.
+
+## Diferencia entre forEach y map
+
+La principal diferencia entre estos dos es que forEach solamente itera cada elemento, mientras que map itera y transforma cada elemento en un nuevo array.
+
+¿Pero también se pueden transformar los elementos con forEach? Sí, sin embargo, necesitas agregar cada elemento en cada iteración a un array nuevo, caso contrario puedes mutar el array original.
+
+# Lecturas recomendadas
+
+[Array - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/)
+
+## Map Reloaded
+
+Ahora que ya sabes cómo funciona el método map de arrays estudiemos diferentes situaciones que deberás manejar array de objetos como los siguientes datos de orders.
+
+    const orders = [
+    {
+        customerName: "Nicolas",
+        total: 60,
+        delivered: true,
+    },
+    {
+        customerName: "Zulema",
+        total: 120,
+        delivered: false,
+    },
+    {
+        customerName: "Santiago",
+        total: 180,
+        delivered: true,
+    },
+    {
+        customerName: "Valentina",
+        total: 240,
+        delivered: true,
+    },
+    ]
+
+## Extrayendo datos necesarios
+
+De un conjunto de datos a veces necesitas ciertos atributos para realizar una operación, extraer los nombres o cuantificar un suceso. El método map te permite extraer estos datos según los puedas utilizar.
+
+        const totales = orders.map(order => order.total)
+
+        console.log(totales) // [ 60, 120, 180, 240 ]
+## Transformando objetos dentro de un array
+
+De un conjunto de datos, de los cuales son objetos, a veces requieres añadir una propiedad nueva o eliminar una que no es necesaria. Si necesitas transformar objetos dentro de un array, debes tener en cuenta que cada objeto tiene una referencia en memoria propia. Por lo que si transformas un objeto, también lo harás en el original como en el nuevo, aun cuando el método map es inmutable.
+
+Los parámetros por referencia los debes tener presente cuando manejes objetos y arrays.
+
+    // Ejemplo donde transformas los objetos originales
+    const tarifas = orders.map(order => {
+        order.tax = 0.19
+        return order
+    })
+
+    tarifas[0] === orders[0] // true
+    tarifas[1] === orders[1] // true
+Una forma de evitar este comportamiento, es crear un nuevo objeto con el spread operator (operador de propagación).
+
+    // Ejemplo donde no transformas los objetos originales
+    const tarifas = orders.map(order => {
+        return {
+            ...order,
+            item: 0.19,
+        }
+    })
+
+    tarifas[0] === orders[0] // false
+    tarifas[1] === orders[1] // false
+Contribución creada por: Andrés Guano.
+
+
