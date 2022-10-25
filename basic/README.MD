@@ -648,3 +648,130 @@ Por ejemplo, filtremos los elementos del array orders cuyo total sea mayor a 150
         }
         ]
         */
+
+## Reduce
+
+El método reduce es inmutable y consiste retornar un solo valor del array iterado a partir de una función (callback) que indica de qué manera se itera cada elemento para reducirlo.
+
+Este método recibe dos argumentos:
+
+- La función que itera y reduce cada elemento del array. (obligatorio)
+- El valor inicial que utilizará como argumento la función. Si no se especifica, en la primera iteración el valor inicial será el primer elemento del array y no ejecuta la función.
+        let reducedValue = array.reduce(function(), initialValue)
+La función, que recibe como argumento el método map, utiliza cuatro parámetros:
+
+- El valor acumulado por la función (callback). En la primera iteración será igual al valor inicial del argumento del método. (obligatorio)
+- El valor actual del elemento iterado. Es decir, si es la primera iteración, será el primer elemento, y así sucesivamente. (obligatorio)
+- El índice del elemento iterado. Es decir, si es la primera iteración, será el índice 0, y así sucesivamente.
+- El array que está iterando.
+        let reducedValue = array.reduce(
+            function(acumulator,element, index, array), 
+            valorInicial
+        )
+
+## Diferencia entre la estructura for y el método reduce
+
+Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
+
+Por ejemplo, hagamos un algoritmo que calcule la suma de los cuadrados de los elementos de un array.
+
+Uso de la estructura for para una reducción
+Si utilizamos la estructura for, necesitaremos una variable acumuladora para sumar los elementos en cada iteración.
+
+const numbers = [5,4,8,6,2]
+let suma = 0
+
+for(let i = 0; i<numbers.length; i++){
+  const number = numbers[i]
+  suma = suma + number**2
+}
+
+console.log(suma) // 145
+
+## Uso del método reduce para una reducción
+
+Con el método reduce, solo debemos establecer la función que indique la reducción para cada elemento.
+
+        const numbers = [5,4,8,6,2]
+
+        const reducedValue = numbers.reduce((suma, number) => suma + number**2)
+
+        console.log(reducedValue) // 125
+Observa que si no especificamos el valor inicial del método, entonces tomará el primer elemento sin ejecutar la función reductora.
+
+        Iteración	Reducción
+        1	5
+        2	5 + 4**2 = 21
+        3	21 + 8**2 = 85
+        4	85 + 6**1 = 121
+        5	121 + 2**2 = 125
+Por lo que debes especificar el valor inicial para solucionar este problema.
+
+        const numbers = [5,4,8,6,2]
+
+        const reducedValue = numbers.reduce((suma, number) => (
+            suma + number**2
+        ), 0) // <- Valor inicial
+
+        console.log(reducedValue) // 145
+
+De esta manera se ejecutará la función reductora adecuadamente.
+
+        Iteración	Reducción
+        1	0 + 5**2 = 25
+        2	25 + 4**2 = 41
+        3	21 + 8**2 = 105
+        4	85 + 6**1 = 141
+        5	121 + 2**2 = 145
+Si se ingresa otro valor inicial, por ejemplo 3, entonces cambiaría la primera iteración.
+
+        Iteración	Reducción
+        1	3 + 5**2 = 28
+        2	28 + 4**2 = 44
+        …	…
+        5	144 + 2**2 = 148
+
+## Reduce reloaded
+
+Ahora que ya sabes cómo funciona el método reduce de arrays, podemos utilizarlo para crear un objeto con la frecuencia de cada elemento de un array, es decir, cuántas veces aparece.
+
+Objeto de frecuencias
+Para obtener un objeto de frecuencias de cada elemento de un array es necesario tener presente las siguientes consideraciones:
+
+- Establecer un objeto vacío como valor inicial del método reduce.
+- El objeto vacío también será nuestro acumulador.
+- Verificar si el elemento ya existe en nuestro objeto de frecuencias.
+- Si no existe, creamos la propiedad referente al elemento del array y le inicializamos en 1.
+- Si ya existe solamente debemos aumentar en una unidad la propiedad de nuestro objeto referente al elemento del array.
+- Finalmente, debes retornar el objeto dentro de la función del método reduce.
+Por ejemplo, con el siguiente array llamado items:
+
+        const items = [5, 6, 7, 6, 5, 7, 7, 8]
+
+El objeto de frecuencias será el siguiente:
+
+        {
+            5: 2,
+            6: 3,
+            7: 2,
+            8: 1,
+        }
+
+## Utilizando el método reduce para crear un objeto de frecuencias
+
+Una vez entendido la entrada y salida del algoritmo, entonces el código será utilizado de la siguiente manera:
+
+        const frecuencias = items.reduce((objeto, elemento) => {
+            if (!objeto[elemento]){
+                objeto[elemento] = 1
+            }else{
+                objeto[elemento] = objeto[elemento] + 1
+            }
+            
+            return objeto
+        }, {})
+
+De esta manera obtendrás el objeto de frecuencias. Puedes utilizar este algoritmo para contar elementos de cualquier array.
+
+
+
