@@ -159,6 +159,7 @@ Si deseas trabajar con los mismos nombres de variables en diferentes archivos, p
     * ( () => {
         let myName = "Victoria";
         })();
+
 Lo mismo por cada variable que desees tener el mismo nombre (myName para este ejemplo) deberás crear este tipo de función para evitar que te den estas advertencias.
 
 ## Operaciones
@@ -310,6 +311,7 @@ También nos indicará error si pretendemos hacer operaciones exclusivas de un t
 
     let meses = ["Mayo","Junio","Julio"];
     meses.map( item => item * 2 ); //ERROR. Se pretende realizar una multiplicación usando strings.
+
 Tipado de arrays en TypeScript
 
 Lo puedes definir así:
@@ -332,7 +334,7 @@ En la inicialización de la variable, colocar datos con el tipo de dato que quie
 
 Requisitos iniciales
 Como requisito inicial, deberás tener dos carpetas: client y server que servirán para ejercicios en el navegador y en el servidor, respectivamente.
-También necesitarás instalar una dependencia llamada http-server. Asimismo puedes clonar el [repositorio Git](https://github.com/platzi/curso-manipulacion-de-arrays/tree/main)  de GitHub del curso.
+También necesitarás instalar una dependencia llamada http-server. Asimismo puedes clonar el [repositorio Git](https://github.com/platzi/curso-manipulacion-de-arrays/tree/main) de GitHub del curso.
 
 Estructura inicial del proyecto del curso
 Si no conoces cómo iniciar un proyector para instalar dependencias, te recomiendo que realices el curso de [Gestión de Dependencias y Paquetes con NPM](https://platzi.com/cursos/npm/).
@@ -341,7 +343,7 @@ Te recomiendo usar Codi.link, es un editor de código para escribir HTML, CSS y 
 
 ## For Each
 
-El método forEach de los arrays consiste en ejecutar una función (callback) para cada uno de los elementos iterados. Iterar significa repetir una acción 
+El método forEach de los arrays consiste en ejecutar una función (callback) para cada uno de los elementos iterados. Iterar significa repetir una acción
 varias veces.
 
 Este método recibe dos argumentos:
@@ -356,9 +358,10 @@ La función, que recibe como argumento el método forEach, utiliza tres parámet
 - El valor actual del elemento iterado. Es decir, si es la primera iteración, será el primer elemento, y así sucesivamente.
 - El índice del elemento iterado. Es decir, si es la primera iteración, será el índice 0, y así sucesivamente.
 - El array que está iterando.
-        array.forEach(function(element, index, array))
+  array.forEach(function(element, index, array))
 
 ## Diferencia entre la estructura for y el método forEach
+
 Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
 
         const letters=['a','b','c']
@@ -371,12 +374,15 @@ Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad d
 
     // Utilizando el método forEach
     letters.forEach(item => console.log('forEach',item))
+
 ## Mostrar elementos de un array al usuario
+
 Ahora que ya conoces cómo funciona el método forEach, utilízalo para agregar elementos al HTML y así que el usuario lo mire.
 
 Por ejemplo, en un archivo HTML agrega una etiqueta div con un id app, que nos servirá para agregar nuestros elementos.
 
         <div id="app"></div>
+
 Después crea la lógica en un archivo de JavaScript.
 
         const products = [
@@ -390,18 +396,21 @@ Después crea la lógica en un archivo de JavaScript.
         products.forEach(product => {
         app.innerHTML += `<li>${product.title} -$ ${product.price}</li>`
         })
+
 Y listo, en pantalla aparecerán los elementos del array products con su título y precio. Revisa el resultado en este codi.link.
 
 ## Ejercicio utilizando la función forEach
-Crea una lista de tareas, a partir de un array que contenga el título y el estado (completado o no) y muéstralos en un archivo HTML. 
+
+Crea una lista de tareas, a partir de un array que contenga el título y el estado (completado o no) y muéstralos en un archivo HTML.
 Puedes utilizar un input de tipo checkbox para indicar el estado de la tarea. ¡Comparte tu trabajo en la sección de aportes!
 
 ## Mutable o Inmutable
 
-Los conceptos de mutabilidad e inmutabilidad son muy importantes para los siguientes métodos de arrays. Existen métodos mutables que cambian el array original; e inmutables que devuelven un 
+Los conceptos de mutabilidad e inmutabilidad son muy importantes para los siguientes métodos de arrays. Existen métodos mutables que cambian el array original; e inmutables que devuelven un
 array diferente al original.
 
 ## Referencias en memoria
+
 En JavaScript, cada estructura está guardada en una referencia en memoria, por lo que si cambiamos un elemento en el array, también lo haremos en esa referencia. Al clonar arrays, se crea un nuevo array que tiene las mismas referencias en memoria que el original, por lo que si se realiza un cambio en el original, también cambiará en la copia.
 
         const original = [1,2,3]
@@ -409,16 +418,18 @@ En JavaScript, cada estructura está guardada en una referencia en memoria, por 
         copia[0] = "Hola"
 
         console.log(original) // [ 'Hola', 2, 3 ]
+
 ## Diferencia entre mutabilidad e inmutabilidad
-Con lo mencionado anteriormente, mutable es aquella acción que cambia el valor en la referencia en memoria del elemento del array original, 
-provocando que cambien el original y la copia. Inmutable es la acción en la que se cambia el valor, pero en una referencia diferente del original, 
+
+Con lo mencionado anteriormente, mutable es aquella acción que cambia el valor en la referencia en memoria del elemento del array original,
+provocando que cambien el original y la copia. Inmutable es la acción en la que se cambia el valor, pero en una referencia diferente del original,
 provocando que el original siga igual.
 
-La mutabilidad es más flexible y una buena opción si se requiere cambiar, actualizar o eliminar datos; pero esto puede ocasionar fallos o resultados 
-erróneos en nuestra aplicación. La inmutabilidad es más exigente, te permite generar nuevas estructuras para manejarlas sin cambiar la original; pero 
+La mutabilidad es más flexible y una buena opción si se requiere cambiar, actualizar o eliminar datos; pero esto puede ocasionar fallos o resultados
+erróneos en nuestra aplicación. La inmutabilidad es más exigente, te permite generar nuevas estructuras para manejarlas sin cambiar la original; pero
 esto puede provocar que la memoria colapse.
 
-Por lo que, ¿cuál es mejor? La respuesta es ninguna, cada uno te permite manejar estructuras de datos, por ende es necesario identificar cuál forma 
+Por lo que, ¿cuál es mejor? La respuesta es ninguna, cada uno te permite manejar estructuras de datos, por ende es necesario identificar cuál forma
 es la adecuada a aplicar en un algoritmo.
 
 ## Qué es el método map
@@ -465,7 +476,7 @@ Con el método map, solo debemos establecer la función que indique la transform
         const newNumbers = numbers.map( function(number){
             return number * 2
         })
-        // o 
+        // o
         const newNumbers = numbers.map(number => number * 2)
 
         console.log(newNumbers) // [ 2, 4, 6, 8, 10 ]
@@ -516,6 +527,7 @@ De un conjunto de datos a veces necesitas ciertos atributos para realizar una op
         const totales = orders.map(order => order.total)
 
         console.log(totales) // [ 60, 120, 180, 240 ]
+
 ## Transformando objetos dentro de un array
 
 De un conjunto de datos, de los cuales son objetos, a veces requieres añadir una propiedad nueva o eliminar una que no es necesaria. Si necesitas transformar objetos dentro de un array, debes tener en cuenta que cada objeto tiene una referencia en memoria propia. Por lo que si transformas un objeto, también lo harás en el original como en el nuevo, aun cuando el método map es inmutable.
@@ -530,6 +542,7 @@ Los parámetros por referencia los debes tener presente cuando manejes objetos y
 
     tarifas[0] === orders[0] // true
     tarifas[1] === orders[1] // true
+
 Una forma de evitar este comportamiento, es crear un nuevo objeto con el spread operator (operador de propagación).
 
     // Ejemplo donde no transformas los objetos originales
@@ -545,14 +558,14 @@ Una forma de evitar este comportamiento, es crear un nuevo objeto con el spread 
 
 ## Filter
 
-El método filter consiste en crear un nuevo array a partir de los elementos originales filtrados mediante una función (callback) 
+El método filter consiste en crear un nuevo array a partir de los elementos originales filtrados mediante una función (callback)
 que indica la condición a cumplir y es inmutable. Si la condición se cumple, retorna el elemento completo.
 
 Este proceso recibe dos argumentos:
 
 - La función que itera y evalúa si cada elemento del array si cumple con la condición especificada (obligatorio).
 - Un objeto al que puede hacer referencia el contexto this en la función. Si se lo omite, será undefined. Recuerde que this en arrow functions es el objeto global.
-        let otherArray = array.filter(function(), thisArg)
+  let otherArray = array.filter(function(), thisArg)
 
 La función, que recibe como argumento el método filter, utiliza tres parámetros:
 
@@ -564,7 +577,7 @@ La función, que recibe como argumento el método filter, utiliza tres parámetr
 
 ## Diferencia entre la estructura for y el método filter
 
-Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o 
+Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o
 parecido.
 
 Por ejemplo, hagamos un algoritmo que filtre los elementos que tengan más de 6 letras en un array de palabras.
@@ -594,7 +607,7 @@ const words = ["spray", "elites", "limit", "apple", "exuberant"]
             return false
             }
         })
-        // o 
+        // o
         const newWords = words.filter(word => word.length >= 6)
 
         console.log(newWords) // [ 'elites', 'exuberant' ]
@@ -634,7 +647,7 @@ Por ejemplo, filtremos los elementos del array orders cuyo total sea mayor a 150
 
         const newOrders = orders.filter(order => order.total > 150)
 
-        console.log(newOrders) 
+        console.log(newOrders)
         /* [
         {
             customerName: 'Santiago',
@@ -657,17 +670,17 @@ Este método recibe dos argumentos:
 
 - La función que itera y reduce cada elemento del array. (obligatorio)
 - El valor inicial que utilizará como argumento la función. Si no se especifica, en la primera iteración el valor inicial será el primer elemento del array y no ejecuta la función.
-        let reducedValue = array.reduce(function(), initialValue)
-La función, que recibe como argumento el método map, utiliza cuatro parámetros:
+  let reducedValue = array.reduce(function(), initialValue)
+  La función, que recibe como argumento el método map, utiliza cuatro parámetros:
 
 - El valor acumulado por la función (callback). En la primera iteración será igual al valor inicial del argumento del método. (obligatorio)
 - El valor actual del elemento iterado. Es decir, si es la primera iteración, será el primer elemento, y así sucesivamente. (obligatorio)
 - El índice del elemento iterado. Es decir, si es la primera iteración, será el índice 0, y así sucesivamente.
 - El array que está iterando.
-        let reducedValue = array.reduce(
-            function(acumulator,element, index, array), 
-            valorInicial
-        )
+  let reducedValue = array.reduce(
+  function(acumulator,element, index, array),
+  valorInicial
+  )
 
 ## Diferencia entre la estructura for y el método reduce
 
@@ -682,8 +695,8 @@ const numbers = [5,4,8,6,2]
 let suma = 0
 
 for(let i = 0; i<numbers.length; i++){
-  const number = numbers[i]
-  suma = suma + number**2
+const number = numbers[i]
+suma = suma + number\*\*2
 }
 
 console.log(suma) // 145
@@ -697,6 +710,7 @@ Con el método reduce, solo debemos establecer la función que indique la reducc
         const reducedValue = numbers.reduce((suma, number) => suma + number**2)
 
         console.log(reducedValue) // 125
+
 Observa que si no especificamos el valor inicial del método, entonces tomará el primer elemento sin ejecutar la función reductora.
 
         Iteración	Reducción
@@ -705,6 +719,7 @@ Observa que si no especificamos el valor inicial del método, entonces tomará e
         3	21 + 8**2 = 85
         4	85 + 6**1 = 121
         5	121 + 2**2 = 125
+
 Por lo que debes especificar el valor inicial para solucionar este problema.
 
         const numbers = [5,4,8,6,2]
@@ -723,6 +738,7 @@ De esta manera se ejecutará la función reductora adecuadamente.
         3	21 + 8**2 = 105
         4	85 + 6**1 = 141
         5	121 + 2**2 = 145
+
 Si se ingresa otro valor inicial, por ejemplo 3, entonces cambiaría la primera iteración.
 
         Iteración	Reducción
@@ -744,9 +760,9 @@ Para obtener un objeto de frecuencias de cada elemento de un array es necesario 
 - Si no existe, creamos la propiedad referente al elemento del array y le inicializamos en 1.
 - Si ya existe solamente debemos aumentar en una unidad la propiedad de nuestro objeto referente al elemento del array.
 - Finalmente, debes retornar el objeto dentro de la función del método reduce.
-Por ejemplo, con el siguiente array llamado items:
+  Por ejemplo, con el siguiente array llamado items:
 
-        const items = [5, 6, 7, 6, 5, 7, 7, 8]
+          const items = [5, 6, 7, 6, 5, 7, 7, 8]
 
 El objeto de frecuencias será el siguiente:
 
@@ -767,13 +783,57 @@ Una vez entendido la entrada y salida del algoritmo, entonces el código será u
             }else{
                 objeto[elemento] = objeto[elemento] + 1
             }
-            
+
             return objeto
         }, {})
 
 De esta manera obtendrás el objeto de frecuencias. Puedes utilizar este algoritmo para contar elementos de cualquier array.
 
 ## Some
+<<<<<<< HEAD
+
+El método somees inmutable y consiste retornar un valor lógico verdadero si existe al menos un elemento que cumpla la condición establecida en la función (callback).
+
+Este método recibe dos argumentos:
+
+- La función que itera y evalúa cada elemento del array hasta que al menos uno cumpla con la condición especificada (obligatorio).
+- Un objeto al que puede hacer referencia el contexto this en la función. Si se lo omite, será undefined. Recuerde que this en arrow functions es el objeto global.
+  array.some(function(), thisArg)
+  La función, que recibe como argumento el método some, utiliza tres parámetros:
+
+- El valor actual del elemento iterado. Es decir, si es la primera iteración, será el primer elemento, y así sucesivamente.
+- El índice del elemento iterado. Es decir, si es la primera iteración, será el índice 0, y así sucesivamente.
+- El array que está iterando.
+        array.some(function(element, index, array))
+
+### Diferencia entre la estructura for y el método some
+
+Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
+
+Por ejemplo, hagamos un algoritmo que indique si en un array existe al menos un número par.
+
+Si utilizamos la estructura for, necesitaremos una variable de tipo booleana con el valor false e iterar hasta que la condición se cumpla. La palabra reservada break rompe el ciclo repetitivo.
+
+        const numbers = [1, 2, 3, 5]
+
+        let respuesta = false
+        for (let i=0; i < numbers.length; i++){
+        const element = numbers[i]
+        if (element % 2 === 0) {
+        respuesta = true
+        break
+        }
+        }
+
+        console.log(respuesta) // true
+
+Con el método some solo debemos establecer la función que indique la condición a cumplir para cada elemento.
+
+        const numbers = [1, 2, 3, 5]
+
+        const respuesta = numbers.some(item => item % 2 === 0)
+        console.log(respuesta) // true
+=======
 
 El método somees inmutable y consiste retornar un valor lógico verdadero si existe al menos un elemento que cumpla la condición establecida en la función (callback).
 
@@ -858,3 +918,4 @@ Con el método every, solo debemos establecer la función que indique la condici
 
         const respuesta = numbers.every(item => item < 40)
         console.log(respuesta) // true
+>>>>>>> 3b5f30acfd38a0fae55d35c6f2a9b8f92bdb4fa8

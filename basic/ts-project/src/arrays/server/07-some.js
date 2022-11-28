@@ -8,22 +8,22 @@ const orders = [
   {
     customer: "Edwin",
     total: 22,
-    delivvered: true,
+    delivered: true,
   },
   {
     customer: "Jose",
     total: 22,
-    delivvered: true,
+    delivered: true,
   },
   {
     customer: "Manuel",
     total: 22,
-    delivvered: false,
+    delivered: false,
   },
   {
     customer: "Pedro",
     total: 22,
-    delivvered: true,
+    delivered: true,
   },
 ];
 
