@@ -918,4 +918,184 @@ Con el método every, solo debemos establecer la función que indique la condici
 
         const respuesta = numbers.every(item => item < 40)
         console.log(respuesta) // true
->>>>>>> 3b5f30acfd38a0fae55d35c6f2a9b8f92bdb4fa8
+
+## Find y FindIndex
+
+Los métodos find y findIndex consisten en encontrar el primer elemento de un array que cumpla con la condición especificada en la función (callback).
+
+En el caso de find retornará el elemento completo, si cumple con la condición, caso contrario retornará undefined. El método findIndex retornará el índice del elemento encontrado, caso contrario retornará -1.
+
+Estos procedimientos reciben dos argumentos:
+
+- La función que itera y evalúa cada elemento del array hasta encuentre uno que cumpla con la condición especificada (obligatorio).
+- Un objeto al que puede hacer referencia el contexto this en la función. Si se lo omite, será undefined. Recuerde que this en arrow functions es el objeto global.
+        array.find(function(), thisArg)
+        array.findIndex(function(), thisArg)
+La función, que recibe como argumento los métodos find y findIndex, utiliza tres parámetros:
+
+- El valor actual del elemento iterado. Es decir, si es la primera iteración, será el primer elemento, y así sucesivamente.
+- El índice del elemento iterado. Es decir, si es la primera iteración, será el índice 0, y así sucesivamente.
+- El array que está iterando.
+        array.find(function(element, index, array))
+        array.findIndex(function(element, index, array))
+### Diferencia entre la estructura for y los métodos find y findIndex
+Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
+
+Por ejemplo, hagamos un algoritmo que devuelva el primer elemento que sea mayor a 40 de un array.
+
+Si utilizamos la estructura for, necesitaremos una variable con el valor undefined e iterar hasta que se cumpla la condición. La palabra reservada break rompe el ciclo repetitivo.
+
+        const numbers = [1, 30, 41, 29, 50, 60]
+
+        let respuesta = undefined
+        for (let i=0; i < numbers.length; i++){
+            const element = numbers[i]
+            if (element >= 40) {
+                respuesta = element
+                break
+            }
+        }
+
+console.log(respuesta) // 41
+Si se necesita el índice, en lugar de una variable con el valor de undefined, debería estar un valor de -1. Y también cambiar el valor del elemento por el del índice del for.
+
+Con los métodos find y findIndex, solo debemos establecer la función que indique la condición a cumplir para cada elemento.
+
+        const numbers = [1, 30, 41, 29, 50, 60]
+
+        const respuesta = numbers.find(item => item >= 40)
+        const respuesta2 = numbers.findIndex(item => item >= 40)
+
+        console.log(respuesta) // 41
+        console.log(respuesta2) // 2
+Recuerda que si los métodos find y findIndex no encuentran EL elemento, devolverán undefined y -1, respectivamente.
+
+        const numbers = ["a", "b", "c"]
+
+        const respuesta = numbers.find(item => item >= 40)
+        const respuesta2 = numbers.findIndex(item => item >= 40)
+
+        console.log(respuesta) // undefined
+        console.log(respuesta2) // -1
+
+## Includes 
+
+El método includes determina si un array o string incluye un determinado elemento. Devuelve true o false, si existe o no respectivamente.
+
+Este método recibe dos argumentos:
+
+- El elemento a comparar.
+- El índice inicial desde donde comparar hasta el último elemento.
+
+*Índices positivos y negativos*
+
+Los índices positivos comienzan desde 0 hasta la longitud total menos uno, de izquierda a derecha del array.
+
+        [0,1,2,3, ...., lenght-1]
+
+Los índices negativos comienzan desde -1 hasta el negativo de la longitud total del array, de derecha a izquierda.
+
+        [-lenght, ...,  -3, -2, -1]
+### Diferencia entre la estructura for y el método includes 
+
+Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
+
+Por ejemplo, hagamos un algoritmo que indique si en un array existe un elemento en específico.
+
+Si utilizamos la estructura for, necesitaremos una variable de tipo booleana con el valor false e iterar hasta que encuentre el elemento específico. La palabra reservada break rompe el ciclo repetitivo.
+
+        const pets = [ "cat", "dog", "bat" ]
+
+        let includeInArray = false
+        for (let i = 0; i < pets.length; i++){
+            const item = pets[i]
+            if (item === "cat"){
+                includeInArray = true
+                break
+            }
+        }
+
+console.log(includeInArray) // true
+Ejemplos utilizando el método includes
+El método includes se utiliza para arrays y strings. El método es sensible a mayúsculas, minúsculas y espacios.
+
+        //Utilizando strings
+        const saludo = "Hola mundo"
+
+        saludo.includes("Hola") // true
+        saludo.includes("Mundo") // false
+        saludo.includes(" ") // true
+        saludo.includes("Hola", 1) // false
+        saludo.includes("mundo", -5) // true
+        // Utilizando arrays
+        const frutas = ["manzana", "pera", "piña", "uva"]
+
+        frutas.includes("manzana") // true
+        frutas.includes("Pera") // false
+        frutas.includes("sandía") // false
+        frutas.includes("manzana", 1) // false
+        frutas.includes("piña", -1) // false
+        frutas[0].includes("man") // true
+
+## Join
+
+El método join une los elementos del array, mediante una separación, y retorna un string. Si un elemento es undefined o null, se convierte en una cadena vacía.
+
+Este procedimiento recibe un argumento:
+
+- La separación de cada elemento del array al unirlos.
+        array.join(separación)
+
+## Diferencia entre la estructura for y el método join
+
+Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
+
+Si utilizamos la estructura for para recrear el método join, necesitaremos una variable con el valor acumuladora con un string vacío y otra con el valor del separador. Se debe evaluar si existe elementos null o undefined, se lo puede realizar con el operador nullish coalescing.
+
+        const elements = ["hola", null, "como", "estas"]
+
+        let acumulator = ""
+        const separator = "/"
+        for (let i = 0; i<elements.length; i++){
+        const element = elements[i] ?? ""
+        if(i !== elements.length-1){
+            acumulator += element + separator
+        }else{
+            acumulator += element
+        }
+        }
+
+console.log(acumulator) // 'hola//como/estas'
+Con el método join solamente debemos establecer el separador de cada elemento como argumento.
+
+        const elements = ["hola", null, "como", "estas"]
+
+        const resultado = elements.join("/")
+
+        console.log(resultado) // 'hola//como/estas'
+### Método split de strings
+
+El método split de strings, es lo contrario que el método join, consiste en separar un string en substrings, indicando un valor a separar. Este método retornará un array de los elementos separados.
+
+Este método recibe dos argumentos:
+
+El separador que especifica el conjunto de caracteres a separar en substrings.
+El límite de elementos separados a retornar.
+const cadena = "JavaScript es maravilloso, con JavaScript puedo crear el futuro de la web."
+
+        cadena.split(" ") 
+        /* [ 'JavaScript', 'es', 'maravilloso,', 'con', 'JavaScript', 'puedo', 'crear', 'el', 'futuro', 'de', 'la', 'web.' ]
+        */
+        cadena.split(", ") 
+        /* [ 
+            'JavaScript es maravilloso', 
+            'con JavaScript puedo crear el futuro de la web.' 
+        ]*/
+        cadena.split("JavaScript")
+        /* [
+            '', 
+            ' es maravilloso, con ', 
+            ' puedo crear el futuro de la web.' 
+        ]*/
+        cadena.split(" ", 3) // [ 'JavaScript', 'es', 'maravilloso,' ]
+
