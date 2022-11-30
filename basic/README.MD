@@ -360,7 +360,7 @@ La función, que recibe como argumento el método forEach, utiliza tres parámet
 - El array que está iterando.
   array.forEach(function(element, index, array))
 
-## Diferencia entre la estructura for y el método forEach
+### Diferencia entre la estructura for y el método forEach
 
 Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
 
@@ -375,7 +375,7 @@ Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad d
     // Utilizando el método forEach
     letters.forEach(item => console.log('forEach',item))
 
-## Mostrar elementos de un array al usuario
+### Mostrar elementos de un array al usuario
 
 Ahora que ya conoces cómo funciona el método forEach, utilízalo para agregar elementos al HTML y así que el usuario lo mire.
 
@@ -399,7 +399,7 @@ Después crea la lógica en un archivo de JavaScript.
 
 Y listo, en pantalla aparecerán los elementos del array products con su título y precio. Revisa el resultado en este codi.link.
 
-## Ejercicio utilizando la función forEach
+### Ejercicio utilizando la función forEach
 
 Crea una lista de tareas, a partir de un array que contenga el título y el estado (completado o no) y muéstralos en un archivo HTML.
 Puedes utilizar un input de tipo checkbox para indicar el estado de la tarea. ¡Comparte tu trabajo en la sección de aportes!
@@ -409,7 +409,7 @@ Puedes utilizar un input de tipo checkbox para indicar el estado de la tarea. ¡
 Los conceptos de mutabilidad e inmutabilidad son muy importantes para los siguientes métodos de arrays. Existen métodos mutables que cambian el array original; e inmutables que devuelven un
 array diferente al original.
 
-## Referencias en memoria
+### Referencias en memoria
 
 En JavaScript, cada estructura está guardada en una referencia en memoria, por lo que si cambiamos un elemento en el array, también lo haremos en esa referencia. Al clonar arrays, se crea un nuevo array que tiene las mismas referencias en memoria que el original, por lo que si se realiza un cambio en el original, también cambiará en la copia.
 
@@ -419,7 +419,7 @@ En JavaScript, cada estructura está guardada en una referencia en memoria, por 
 
         console.log(original) // [ 'Hola', 2, 3 ]
 
-## Diferencia entre mutabilidad e inmutabilidad
+### Diferencia entre mutabilidad e inmutabilidad
 
 Con lo mencionado anteriormente, mutable es aquella acción que cambia el valor en la referencia en memoria del elemento del array original,
 provocando que cambien el original y la copia. Inmutable es la acción en la que se cambia el valor, pero en una referencia diferente del original,
@@ -575,7 +575,7 @@ La función, que recibe como argumento el método filter, utiliza tres parámetr
 
         const other = array.map(function(element, index, array))
 
-## Diferencia entre la estructura for y el método filter
+### Diferencia entre la estructura for y el método filter
 
 Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o
 parecido.
@@ -614,7 +614,7 @@ const words = ["spray", "elites", "limit", "apple", "exuberant"]
 
 Recuerda siempre retornar un valor en la función callback del método.
 
-## Filtrar elementos a partir de la propiedad de un objeto
+### Filtrar elementos a partir de la propiedad de un objeto
 
 Con el método filter puedes filtrar los objetos de un array a partir de una condición referente a la propiedad de cada elemento.
 
@@ -682,7 +682,7 @@ Este método recibe dos argumentos:
   valorInicial
   )
 
-## Diferencia entre la estructura for y el método reduce
+### Diferencia entre la estructura for y el método reduce
 
 Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
 
@@ -701,7 +701,7 @@ suma = suma + number\*\*2
 
 console.log(suma) // 145
 
-## Uso del método reduce para una reducción
+### Uso del método reduce para una reducción
 
 Con el método reduce, solo debemos establecer la función que indique la reducción para cada elemento.
 
@@ -747,7 +747,7 @@ Si se ingresa otro valor inicial, por ejemplo 3, entonces cambiaría la primera 
         …	…
         5	144 + 2**2 = 148
 
-## Reduce reloaded
+### Reduce reloaded
 
 Ahora que ya sabes cómo funciona el método reduce de arrays, podemos utilizarlo para crear un objeto con la frecuencia de cada elemento de un array, es decir, cuántas veces aparece.
 
@@ -773,7 +773,7 @@ El objeto de frecuencias será el siguiente:
             8: 1,
         }
 
-## Utilizando el método reduce para crear un objeto de frecuencias
+### Utilizando el método reduce para crear un objeto de frecuencias
 
 Una vez entendido la entrada y salida del algoritmo, entonces el código será utilizado de la siguiente manera:
 
@@ -790,7 +790,6 @@ Una vez entendido la entrada y salida del algoritmo, entonces el código será u
 De esta manera obtendrás el objeto de frecuencias. Puedes utilizar este algoritmo para contar elementos de cualquier array.
 
 ## Some
-<<<<<<< HEAD
 
 El método somees inmutable y consiste retornar un valor lógico verdadero si existe al menos un elemento que cumpla la condición establecida en la función (callback).
 
@@ -833,7 +832,6 @@ Con el método some solo debemos establecer la función que indique la condició
 
         const respuesta = numbers.some(item => item % 2 === 0)
         console.log(respuesta) // true
-=======
 
 El método somees inmutable y consiste retornar un valor lógico verdadero si existe al menos un elemento que cumpla la condición establecida en la función (callback).
 
@@ -848,33 +846,6 @@ La función, que recibe como argumento el método some, utiliza tres parámetros
 - El índice del elemento iterado. Es decir, si es la primera iteración, será el índice 0, y así sucesivamente.
 - El array que está iterando.
         array.some(function(element, index, array))
-
-## Diferencia entre la estructura for y el método some
-
-Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
-
-Por ejemplo, hagamos un algoritmo que indique si en un array existe al menos un número par.
-
-Si utilizamos la estructura for, necesitaremos una variable de tipo booleana con el valor false e iterar hasta que la condición se cumpla. La palabra reservada break rompe el ciclo repetitivo.
-
-        const numbers = [1, 2, 3, 5]
-
-        let respuesta = false
-        for (let i=0; i < numbers.length; i++){
-            const element = numbers[i]
-            if (element % 2 === 0) {
-                respuesta = true
-                break
-            }
-        }
-
-console.log(respuesta) // true
-Con el método some solo debemos establecer la función que indique la condición a cumplir para cada elemento.
-
-        const numbers = [1, 2, 3, 5]
-
-        const respuesta = numbers.some(item => item % 2 === 0)
-        console.log(respuesta) // true
 
 ## Every
 
@@ -892,7 +863,7 @@ La función, que recibe como argumento el método every, utiliza tres parámetro
 - El array que está iterando.
         array.every(function(element, index, array))
 
-## Diferencia entre la estructura for y el método every
+### Diferencia entre la estructura for y el método every
 
 Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
 
@@ -1046,7 +1017,7 @@ Este procedimiento recibe un argumento:
 - La separación de cada elemento del array al unirlos.
         array.join(separación)
 
-## Diferencia entre la estructura for y el método join
+### Diferencia entre la estructura for y el método join
 
 Los métodos de arrays nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura for, con un resultado igual o parecido.
 
@@ -1099,3 +1070,165 @@ const cadena = "JavaScript es maravilloso, con JavaScript puedo crear el futuro 
         ]*/
         cadena.split(" ", 3) // [ 'JavaScript', 'es', 'maravilloso,' ]
 
+## Concat
+
+El método concat es inmutable y consiste en crear un nuevo array a partir de la unión de otros valores o arrays especificados como argumentos.
+
+Este método recibe uno o varios argumentos:
+
+Valores cualesquiera y/o arrays para concatenar.
+        let result = array.concat(otherArray)
+Diferencia entre la estructura for y el método concat
+Si deseas utilizar una estructura for para concatenar arrays, debes copiar el primer array sin su referencia en memoria para que no exista mutabilidad. Puedes realizar una copia con el spread operator (operador de propagación) o con el nuevo método structuredClone. También puedes utilizar el método push si no importa la mutabilidad del array original.
+
+Con el método concat, solo debemos establecer el/los elemento/s a concatenar a un array de manera inmutable, es decir, los elementos originales no cambiarán.
+
+        const numbers1 = [1,2,3,4]
+        const numbers2 = [5,6,7,8]
+        const numbers3 = [9,10,11,12]
+
+        const result1 = numbers1.concat("hola", "mundo")
+        const result2 = numbers1.concat(numbers2)
+        const result3 = numbers1.concat(numbers2, "hola")
+        const result4 = numbers1.concat(numbers2, numbers3)
+
+        result1 // [ 1, 2, 3, 4, 'hola', 'mundo' ]
+        result2 // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+        result3 // [ 1, 2, 3, 4, 5, 6, 7, 8, 'hola' ]
+        result4 // [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+
+
+## Flat
+
+El método flat es inmutable que consiste en retornar un array donde los sub-arrays han sido aplanados hasta una profundidad especificada. El aplanamiento consiste en transformar un array de arrays a una sola dimensión.
+
+Este procedimiento recibe un argumento:
+
+La profundidad del aplanamiento, por defecto, tiene un valor de 1. Si se desea aplanar todos los sub-arrays en una sola dimensión, utiliza el valor de Infinity.
+        array.flat(profundidad)
+Diferencia entre la estructura for y el método flat
+Si se utiliza la estructura for para aplanar un array de arrays, es necesario utilizar otra estructura for para cada sub-nivel del array o recursión.
+
+        const matrix = [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9],
+        ]
+
+        const flatArray = []
+
+        for(let i=0; i<matrix.length; i++){
+        const array = matrix[i]
+        for(let j=0; j<array.length; j++){
+            flatArray.push(matrix[i][j])
+        }
+        }
+
+        console.log(flatArray)
+// [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+Con el método flat solamente es necesario indicar la profundidad de aplanamiento del array.
+
+        const array = [1,2,[3,4],5,6]
+        const result = array.flat() 
+        result// [1,2,3,4,5,6]
+
+        const array2 = [1, 2, [3, 4, [5, 6]]];
+        const result2 = array2.flat() 
+        result2// [1, 2, 3, 4, [5, 6]]
+
+        const array3 = [1, 2, [3, 4, [5, 6]]]
+        const result3 = array3.flat(2) 
+        result3// [1, 2, 3, 4, 5, 6]
+
+        const array4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]]
+        const result4 = array4.flat(Infinity) 
+        result4// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+## FlatMap
+
+El método flatMap es inmutable y consiste en la combinación de los métodos map y flat. Primero realiza la iteración de los elementos del array (como si fuera map), y después los aplana en una sola profundidad (como si fuera flat).
+
+Este procedimiento recibe los mismos argumentos que el método map.
+
+        const strings = ["Nunca pares", "de Aprender"]
+
+        strings.map(string => string.split(" ")) 
+        // [ [ 'Nunca', 'pares' ], [ 'de', 'Aprender' ] ]
+
+        strings.flatMap(string => string.split(" ")) 
+        // [ 'Nunca', 'pares', 'de', 'Aprender' ]
+        const numbers = [1, 2, 3, 4]
+
+        numbers.map(number => [number * 2]) 
+        // [[2], [4], [6], [8]]
+
+numbers.flatMap(number => [number *2]) 
+// [2, 4, 6, 8]
+Cuidado con el método flatMap, primero realiza el map y luego el flat.
+
+        const numbers2 = [1,[2,3], 4, 5]
+        numbers2.flatMap(number => [number *2]) 
+        // [ 2, NaN, 8, 10 ]
+        // * Recuerda: NaN = No a Number
+
+## Mutable functions
+
+Las funciones mutables consisten en cambiar el array original. Estos métodos son:
+
+* push
+*unshift
+*pop
+*shift
+*splice
+*sort
+
+### Método push
+El método push agrega uno o varios elementos al final del array original. El método recibe como argumento los valores a agregar. Retorna el número de elementos del array mutado.
+
+        const array = [1,2,3]
+        array.push(4,5)
+        console.log(array) // [ 1, 2, 3, 4, 5 ]
+### Método unshift
+El método unshift agrega uno o varios elementos al inicio del array original. El método recibe como argumento los valores a agregar. Retorna el número de elementos del array mutado.
+
+        const array = [3,4,5]
+        array.unshift(1,2)
+        console.log(array) // [ 1, 2, 3, 4, 5 ]
+### Método pop
+El método pop extrae el elemento del final del array original. El método no recibe ningún argumento. Retorna el elemento extraído, si no se guarda en una variable, el Garbage Collection{target="_blank"} lo elimina.
+
+        const array = [1,2,3,4]
+        const lastElement = array.pop()
+        console.log(lastElement) // 4
+        console.log(array) // [ 1, 2, 3 ]
+### Método shift
+El método shift extrae el elemento del inicio del array original. El método no recibe ningún argumento. Retorna el elemento extraído, si no se guarda en una variable, el Garbage Collection{target="_blank"} lo elimina.
+
+        const array = [1,2,3,4]
+        const firstElement = array.shift()
+        console.log(firstElement) // 1
+        console.log(array) // [ 2, 3, 4 ]
+### Método splice
+El método splice extrae uno o varios elementos del array original a partir del índice y los reemplaza con otro elemento especificado como argumento. Retorna un array con los elementos extraídos, si no se guarda en una variable, el Garbage Collection{target="_blank"} lo elimina.
+
+El método splice recibe tres argumentos:
+
+*El índice donde comenzará a cambiar el array.
+*La cantidad de elementos que serán reemplazados.
+*Uno o varios elementos que reemplazarán a los originales del array.
+        array.splice(índice, cantidad, items)
+        array.splice(índice, cantidad, item1, item2, ..., itemN)
+Ejemplos utilizando el método splice
+        const array = [1,2,3,4]
+        const elements = array.splice(2,1,"tres")
+        console.log(elements) // [3]
+        console.log(array) // [ 1, 2, 'tres', 4 ]
+
+        const array = [1,2,3,4]
+        const elements = array.splice(1,2,"dos", "tres")
+        console.log(elements) // [ 2, 3 ]
+        console.log(array) // [ 1, 'dos', 'tres', 4 ]
+
+
+
+## Any
