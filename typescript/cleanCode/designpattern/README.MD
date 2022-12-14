@@ -13,7 +13,10 @@
         - npx tsc  compila
         - npx tsc --watch
 
-# Editor configuration, see https://editorconfig.org
+# Editor .git, 
+
+
+        see https://editorconfig.org
 
                 root = true
 
@@ -44,3 +47,6 @@ Dentro del archivo TSConfig.json podemos ver que tiene muchas propiedades coment
                 "rootDir": "./src",    
                 "outDir": "./dist",   
 
+## Ejecution
+- npx tsc --watch
+-  node dist/name-ts.ts
