@@ -1319,3 +1319,77 @@ También podríamos combinarlas para facilitar aún más el desarrollo de nuestr
                 function yourSize( userSize: Sizes ){
                 console.log(`Tu medida es ${userSize}`);
                 }
+
+## NUll y undefine
+
+Estos dos funcionan como dos tipos de datos, al igual que, por ejemplo, string o number.
+
+El tipo de datonull es para indicar un valor nulo y undefined para algo indefinido. Son tipos diferentes.
+
+### Null y Undefined como tipo Any
+En TypeScript, si no especificamos que va a ser null o undefined, estos son inferidos como tipo any:
+
+                //TypeScript
+                let myVar = null; //Tipo any
+                let otherVar = undefined; //Tipo any
+
+                let myNull: null = null; // Tipo null
+                let myUndefined: undefined = undefined; //Tipo undefined
+### Union Types como emergencia
+Hay casos en la que queremos que una variable sea de tipo string o number y que al inicializarlas sean de tipo null o undefined para luego asignarles un valor del tipo de dato de los primeros mencionados. En este contexto podríamos usar los Union Types:
+
+                let myNumber: number | null = null;
+                myNumber = 50;
+
+                let myString: string | undefined = undefined;
+                myString = "Hola TypeScript";
+
+## Funciones
+
+Las funciones son nativas de JavaScript y esencialmente funcionan igual en TypeScript. Sin embargo, este último, con su sistema de tipado, nos ayudará a llevar a cabo una implementación más segura:
+
+Podemos definir que los argumentos de la función tengan un determinado tipo de dato (o más de uno si se usa Union Types):
+                type Sizes = 'S' | 'M' | 'L' | 'XL'; //Alias y Tipos Literales
+
+                function createProductJson(
+                title: string,
+                createdAt: Date,
+                stock: number,
+                size: Sizes
+                ){
+                return {
+                        title,
+                        createdAt,
+                        stock,
+                        size
+                }
+                }
+En el argumento createdAt se indica que es de tipo Date en alusión al objeto Date propio de JavaScript y no a un tipo de dato como string o number. Son diferentes las definiciones.
+
+Cuando hagamos uso de nuestra función, TypeScript comprobará que le envíes todos los parámetros en orden y con el tipo de dato que se declaró en la función:
+                const producto1 = createProductJson(
+                "titulo",
+                new Date('10/10/3030'),
+                30,
+                'M'
+                )
+                Ejemplo de una función en TypeScript
+En Visual Studio Code, si dejas el cursor sobre el nombre de la función que vas a invocar, te mostrará un mensaje con los detalles de la función, lo que espera como parámetros y lo que devolverá indicando además el orden y el tipo de dato de cada variable.
+
+Si queremos que un argumento sea opcional de enviar, podemos usar el modificador ? junto al nombre del argumento:
+                type Sizes = 'S' | 'M' | 'L' | 'XL'; //Alias y Tipos Literales
+
+                function createProductJson(
+                title: string,
+                createdAt: Date,
+                stock?: number,
+                size?: Sizes
+                ){
+                /*Código de la función*/
+                }
+Nota: cuando definamos argumentos opcionales en una función, estas deben ubicarse al final, si no TypeScript nos indicará un **error, ya que podría haber confusiones al momento de invocar la función y enviar los respectivos parámetros:
+
+                function randomFunc(title: string, amount?: number){} //CORRECTO
+
+                function otherFunc(title?: string, amount: number){} // ERROR
+
