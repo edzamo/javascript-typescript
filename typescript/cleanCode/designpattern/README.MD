@@ -6,7 +6,6 @@
         - cd tsc --version
         - .gitignore 
         - npm init
-        - - npm init
         - npx tsc --init 
         -     "outDir": "./dist",   
         -     "rootDir": "./src",   
