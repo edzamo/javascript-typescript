@@ -1,0 +1,23 @@
+{
+  "name": "curso-rxjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs-compat": "^6.6.7",
+    "rxjs-observable": "^0.0.7",
+    "webpack": "5.88.2",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4",
+    "source-map-loader": "^1.0.0"
+  }
+}
